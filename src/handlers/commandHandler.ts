@@ -1,4 +1,4 @@
-import { Client } from "discord.js";
+import { Client, Collection } from "discord.js";
 import { readdirSync } from "fs";
 import path from "path";
 
@@ -9,7 +9,8 @@ export async function loadCommands(client: Client) {
   for (const file of commandFiles) {
     const filePath = path.join(commandsPath, file);
     const command = await import(filePath);
-    if (!client.commands) client.commands = new Map();
-    client.commands.set(command.default.data.name, command.default);
+    if (client.commands instanceof Collection) {
+      client.commands.set(command.default.data.name, command.default);
+    }
   }
 }

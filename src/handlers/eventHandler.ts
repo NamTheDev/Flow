@@ -8,11 +8,12 @@ export async function loadEvents(client: Client) {
 
   for (const file of eventFiles) {
     const filePath = path.join(eventsPath, file);
-    const event = await import(filePath);
-    if (event.default.once) {
-      client.once(event.default.name, (...args) => event.default.execute(...args));
+    const eventModule = await import(filePath);
+    const event = eventModule.default;
+    if (event.once) {
+      client.once(event.name, (...args: any[]) => event.execute(...args));
     } else {
-      client.on(event.default.name, (...args) => event.default.execute(...args));
+      client.on(event.name, (...args: any[]) => event.execute(...args));
     }
   }
 }

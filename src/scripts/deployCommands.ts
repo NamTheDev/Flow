@@ -1,11 +1,11 @@
-import { REST, Routes } from "discord.js";
+import { REST, Routes, SlashCommandBuilder } from "discord.js";
 import { readdirSync } from "fs";
 import path from "path";
 import { config } from "dotenv";
 
 config();
 
-const commands = [];
+const commands: any[] = [];
 const commandsPath = path.join(__dirname, "../commands");
 const commandFiles = readdirSync(commandsPath).filter(file => file.endsWith(".ts"));
 
