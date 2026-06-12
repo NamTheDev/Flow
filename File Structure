@@ -1,9 +1,0 @@
-@src/
-├── commands/
-│   └── ping.js
-├── events/
-│   └── ready.js
-├── handlers/
-│   ├── commandHandler.js
-│   └── eventHandler.js
-└── index.js
