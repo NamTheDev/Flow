@@ -1,9 +1,6 @@
 import { REST, Routes } from "discord.js";
-import { config } from "dotenv";
 
-config();
-
-const rest = new REST({ version: "10" }).setToken(process.env.DISCORD_TOKEN!);
+const rest = new REST({ version: "10" }).setToken(Bun.env.DISCORD_TOKEN!);
 
 try {
   console.log("Started resetting application (/) commands.");
