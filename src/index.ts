@@ -1,4 +1,6 @@
 import { Client, GatewayIntentBits } from "discord.js";
+import { loadEvents } from "./handlers/eventHandler";
+import { loadCommands } from "./handlers/commandHandler";
 
 const client = new Client({
   intents: [
@@ -8,13 +10,7 @@ const client = new Client({
   ]
 });
 
-client.on("ready", () => {
-  console.log(`Logged in as ${client.user?.tag}!`);
-});
-
-client.on("messageCreate", (message) => {
-  if (message.author.bot) return;
-  message.reply("Pong!");
-});
+loadEvents(client);
+loadCommands(client);
 
 client.login(process.env.DISCORD_TOKEN);
