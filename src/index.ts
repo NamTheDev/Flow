@@ -10,7 +10,7 @@ const client = new Client({
   ]
 });
 
-loadEvents(client);
-loadCommands(client);
+await loadEvents(client);
+await loadCommands(client);
 
 client.login(process.env.DISCORD_TOKEN);

@@ -2,17 +2,17 @@ import { Client } from "discord.js";
 import { readdirSync } from "fs";
 import path from "path";
 
-export function loadEvents(client: Client) {
+export async function loadEvents(client: Client) {
   const eventsPath = path.join(__dirname, "../events");
   const eventFiles = readdirSync(eventsPath).filter(file => file.endsWith(".ts"));
 
   for (const file of eventFiles) {
     const filePath = path.join(eventsPath, file);
-    const event = require(filePath);
-    if (event.once) {
-      client.once(event.name, (...args) => event.execute(...args));
+    const event = await import(filePath);
+    if (event.default.once) {
+      client.once(event.default.name, (...args) => event.default.execute(...args));
     } else {
-      client.on(event.name, (...args) => event.execute(...args));
+      client.on(event.default.name, (...args) => event.default.execute(...args));
     }
   }
 }

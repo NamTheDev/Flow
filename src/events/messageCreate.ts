@@ -1,6 +1,6 @@
 import { Message } from "discord.js";
 
-export = {
+export default {
   name: "messageCreate",
   execute(message: Message) {
     if (message.author.bot) return;
