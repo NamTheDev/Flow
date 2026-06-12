@@ -1,4 +1,4 @@
-import { Client, GatewayIntentBits, Collection, CommandInteraction } from "discord.js";
+import { Client, GatewayIntentBits, Collection } from "discord.js";
 import { loadEvents } from "./handlers/eventHandler";
 import { loadCommands } from "./handlers/commandHandler";
 
