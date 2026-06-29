@@ -25,6 +25,7 @@ const client = new Client({
 client.commands = new Collection();
 
 await loadEvents(client);
+
 await loadCommands(client);
 
 client.login(Bun.env.DISCORD_TOKEN);
