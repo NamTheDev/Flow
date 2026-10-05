@@ -1,5 +1,8 @@
 # testing
 
+> [!WARNING]
+> **Abandoned.** This project is no longer maintained.
+
 To install dependencies:
 
 ```bash
